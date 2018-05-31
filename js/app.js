@@ -1,5 +1,24 @@
 // Enemies our player must avoid
-var Enemy = function() {
+var score = 0;
+
+//check the collision
+var checkCollisions = function () {
+    //if(this.x < player.x+30 && player.x < this.x+60 && this.y < player.y+60 && player.y < this.y+40 )
+
+    for (var i = 0; i < allEnemies.length; ++i) {
+        if ((allEnemies[i].x < player.x + 30) && (player.x < allEnemies[i].x + 60) && (allEnemies[i].y < player.y + 60) && (player.y < allEnemies[i].y + 40)) {
+            score = score - 1;
+            if (score < 0) {
+                score = 0;
+            }
+
+            document.getElementById('score').innerHTML = score;
+            player.reset();
+        }
+    }
+};
+
+var Enemy = function () {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
@@ -10,14 +29,14 @@ var Enemy = function() {
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
-Enemy.prototype.update = function(dt) {
+Enemy.prototype.update = function (dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
 };
 
 // Draw the enemy on the screen, required method for game
-Enemy.prototype.render = function() {
+Enemy.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
@@ -28,13 +47,13 @@ Enemy.prototype.render = function() {
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
+// Place the player object in a variable called pla
 
-
+yer
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
-document.addEventListener('keyup', function(e) {
+document.addEventListener('keyup', function (e) {
     var allowedKeys = {
         37: 'left',
         38: 'up',
