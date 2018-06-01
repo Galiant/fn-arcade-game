@@ -1,6 +1,8 @@
 // Enemies our player must avoid
 var score = 0;
 
+document.getElementById('score').innerHTML = score;
+
 //check the collision
 var checkCollisions = function () {
     //if(this.x < player.x+30 && player.x < this.x+60 && this.y < player.y+60 && player.y < this.y+40 )
@@ -44,16 +46,52 @@ Enemy.prototype.render = function () {
 };
 
 // Now write your own player class
-// This class requires an update(), render() and
-// a handleInput() method.
+var Player = function () {
+    this.sprite = 'images/char-boy.png';
+    this.x = 200;
+    this.y = 400;
+};
+// This class requires an update(), render() and a handleInput() method.
+//update method 
+Player.prototype.update = function () {
+    //if the player reaches to the water
+    //this.checkCollisions();
 
+    if (this.y < 20) {
+        score++;
+        document.getElementById('score').innerHTML = score;
+        this.reset();
+    }
+};
+
+//render method: to draw the player on the screen
+Player.prototype.render = function () {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+
+//handleInput method to handle the direction from the player
+Player.prototype.handleInput = function (direction) {
+    if (direction == 'left' && this.x > 0) {
+        this.x -= 50;
+    } else if (direction == 'right' && this.x < 400) {
+        this.x += 50;
+    } else if (direction == 'up' && this.y > 2) {
+        this.y -= 50;
+    } else if (direction == 'down' && this.y < 400) {
+        this.y += 50;
+    }
+};
+
+//reset method: if the player reached to the water or if the player collision with the enemy, reset the player to the starting point
+Player.prototype.reset = function () {
+    this.x = 200;
+    this.y = 400;
+};
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called pla
-
-yer
-
+// Place the player object in a variable called player
+var player = new Player();
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function (e) {
