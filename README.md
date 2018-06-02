@@ -22,12 +22,12 @@ Once a the player collides with an enemy, player lose the point(-1) and the play
 
 ## Technology
 
-Pure JavaScript
-CSS
-HTML
+* Pure JavaScript
+* CSS
+* HTML
 
 ---
 
 ## Credits
 
-Core project files (engine and resources) provided by Udacity
+Core project files (engine and resources) provided by Udacity.
