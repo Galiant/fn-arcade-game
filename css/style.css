@@ -1,4 +1,14 @@
 body {
     text-align: center;
-    background-color: aquamarine;
+    background-color: rgb(28, 172, 124);
+}
+
+h1 {
+    padding-top: 30px;
+    color: white;
+}
+
+h2 {
+    padding-top: 20px;
+    color: white;
 }
