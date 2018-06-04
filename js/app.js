@@ -3,22 +3,6 @@ var score = 0;
 
 document.getElementById('score').innerHTML = score;
 
-//check the collision
-var checkCollisions = function () {
-
-    for (var i = 0; i < allEnemies.length; ++i) {
-        if ((allEnemies[i].x < player.x + 30) && (player.x < allEnemies[i].x + 60) && (allEnemies[i].y < player.y + 60) && (player.y < allEnemies[i].y + 40)) {
-            score = score - 1;
-            if (score < 0) {
-                score = 0;
-            }
-
-            document.getElementById('score').innerHTML = score;
-            player.reset();
-        }
-    }
-};
-
 // Enemies our player must avoid during game
 var Enemy = function (x, y) {
     // Variables applied to each of our instances go here, we've provided one for you to get started
@@ -51,6 +35,22 @@ var Player = function () {
     this.sprite = 'images/char-boy.png';
     this.x = 200;
     this.y = 400;
+};
+
+//check the collision
+Player.prototype.checkCollisions = function () {
+
+    for (var i = 0; i < allEnemies.length; ++i) {
+        if ((allEnemies[i].x < player.x + 40) && (player.x < allEnemies[i].x + 60) && (allEnemies[i].y < player.y + 60) && (player.y < allEnemies[i].y + 40)) {
+            score = score - 1;
+            if (score < 0) {
+                score = 0;
+            }
+
+            document.getElementById('score').innerHTML = score;
+            player.reset();
+        }
+    }
 };
 // This class requires an update(), render() and a handleInput() method.
 //update method 
